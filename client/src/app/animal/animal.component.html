@@ -1,0 +1,123 @@
+<div id="animal">
+  <h1>Animal</h1>
+
+  <div class="divider"></div>
+  <div class="container contentSelect">
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <label class="input-group-text" for="proprietaireselect">PK proprietaire</label>
+      </div>
+      <select
+        class="custom-select"
+        id="proprietaireselect"
+        (change)="updateselectedOwner($event.target.options.selectedIndex)"
+      >
+        <option *ngFor="let p of proprieatirekeys ">{{ p.numeroproprietaire }}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="container contentSelect">
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <label class="input-group-text" for="cliniqueSelect" >PK Clinique</label>
+      </div>
+      <select
+        class="custom-select"
+        id="cliniqueSelect"
+        (change)="updateclinique($event.target.options.selectedIndex)"
+      >
+        <option *ngFor="let it of cliniquesKeys">{{ it.numeroclinique }}</option>
+      </select>
+    </div>
+  
+    
+        
+    <div class="divider"></div>
+    <div class="btn2">
+  Search by Name
+     <input type="text" [(ngModel)]="name">  <button type="button" class="btn" (click)="searchanimal()">Search</button>
+    </div>
+   
+  <br><br/>
+  <br><br/>
+  
+
+  <table id="ht" align="center" border="1" width="1000" class="table-striped table-hover">
+    <thead class="header">
+      <th class="contentCell">ANIMAL NUMBER</th>
+      <th class="contentCell">NUMERO PROPRIETAIRE</th>
+      <th class="contentCell">NUMERO CLINIQUE</th>
+      <th class="contentCell">NOM</th>
+      <th class="contentCell">TYPE ANIMAL</th>
+      <th class="contentCell">ESPECE</th>
+      <th class="contentCell">TAILLE</th>
+      <th class="contentCell">POIDS</th>
+      <th class="contentCell">DESCRIPTION</th>
+      <th class="contentCell">DATE NAISSANCE</th>
+      <th class="contentCell">DATE INSCRIPTION</th>
+      <th class="contentCell">ETAT</th>
+      <th class="actionCell">ACTION</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let animal of animals; let i = index">
+        <td class="contentCell">{{ animal.numeroanimal }}</td>
+        <td class="contentCell">{{ animal.numeroproprietaire }}</td>
+        <td class="contentCell">{{ animal.numeroclinique }}</td>
+        <td class="contentCell">{{ animal.nom }}</td>
+        <td class="contentCell">{{ animal.typeanimal }}</td>
+        <td class="contentCell">{{ animal.espece }}</td>
+        <td class="contentCell" contenteditable="true" (blur)="changeAnimalSize($event, i)">{{ animal.taille}}</td>
+        <td class="contentCell" contenteditable="true" (blur)="changeAnimalPoids($event, i)">{{ animal.poids }}</td>
+        <td class="contentCell">{{ animal.description }}</td>
+        <td class="contentCell">{{ animal.datenaissance.slice(0,10) }}</td>
+        <td class="contentCell">{{ animal.dateinscription.slice(0,10)  }}</td>
+        <td class="contentCell" contenteditable="true" (blur)="changeAnimalEtat($event, i)">{{ animal.etat }}</td>
+        <td class="actionCell">
+          <button type="button" class="deletebtn" (click)="deleteAnimal(i)"><i class="fa fa-trash-o"></i></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+      <p>Inserer un nouveau animal</p>
+      <table id="ht" align="center" border="1" width="1000" class="table-striped table-hover">
+        <thead class="header">
+          <th class="contentCell">ANIMAL NUMBER</th>
+          <th class="contentCell">NUMERO PROPRIETAIRE</th>
+          <th class="contentCell">NUMERO CLINIQUE</th>
+          <th class="contentCell">NOM</th>
+          <th class="contentCell">TYPE ANIMAL</th>
+          <th class="contentCell">ESPECE</th>
+          <th class="contentCell">TAILLE</th>
+          <th class="contentCell">POIDS</th>
+          <th class="contentCell">DESCRIPTION</th>
+          <th class="contentCell">DATE NAISSANCE</th>
+          <th class="contentCell">DATE INSCRIPTION</th>
+          <th class="contentCell">ETAT</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td #numeroanimal contenteditable="true"  class="contentCell"></td>
+            <td class="contentCell" >{{   this.proprietaireKey }}</td>
+            <td class="contentCell" >{{  this.selectedCliniqueKey   }}</td>
+            <td #nom contenteditable="true" class="contentCell"  ></td>
+            <td #type  contenteditable="true" class="contentCell"></td>
+            <td #espece  contenteditable="true" class="contentCell"></td>
+            <td #taille class="contentCell" contenteditable="true" ></td>
+            <td #poids contenteditable="true" class="contentCell" contenteditable="true"></td>
+            <td #description contenteditable="true" class="contentCell" ></td>
+            <td #datenaissance contenteditable="true" class="contentCell"></td>
+            <td #dateinscription contenteditable="true" class="contentCell" ></td>
+            <td #etat class="contentCell" contenteditable="true"></td>
+          </tr>
+      
+        </tbody>
+      </table>
+
+
+  <button type="button" class="btn" (click)="insertAnimal()">+</button>
+
+
+</div>

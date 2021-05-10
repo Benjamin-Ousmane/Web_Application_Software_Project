@@ -1,0 +1,19 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand title" href="/">INF3710 - TP5</a>
+  <div class="navbar-expand mr-auto">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" routerLink="/animal">Animal</a>
+      <a class="nav-item nav-link active" routerLink="/traitement">Traitement</a>
+    </div>
+  </div>
+</nav>
+
+<div class="home" *ngIf="route == ''">
+  <p>
+    Welcome<br />to<br /><span class="CliniqueBD">Cliniques</span
+    ><span class="CliniqueBD2">Veterinaire</span><span class="CliniqueBD3"> Montreal</span>
+  </p>
+  <button type="button" class="btn" routerLink="/animal">CHECK OUR CLINIQUES &#10140;</button>
+</div>
+
+<router-outlet></router-outlet>

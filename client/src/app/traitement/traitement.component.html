@@ -1,0 +1,47 @@
+<div id="Traitement">
+  <h1>Traitement</h1>
+
+  <div class="divider"></div>
+
+  <div class="container contentSelect">
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <label class="input-group-text" for="Animalselect">Animal</label>
+      </div>
+      <select class="custom-select" id="TraitementSelect" (change)="updateSelectedTraitement($event.target.options.selectedIndex)">
+        <option *ngFor="let Animal of animalPK">{{ Animal.numeroanimal }}</option>
+      </select>
+    </div>
+ 
+  </div>
+
+  <table
+    id="ht"
+    align="center"
+    border="1"
+    width="1000"
+    class="table-striped table-hover"
+  >
+    <thead class="Traitement">
+      <th class="contentCell">NUMERO TRAITEMENT</th>
+      <th class="contentCell">DESCRIPTION</th>
+      <th class="contentCell">COUT</th>
+      <th class="contentCell">DATEDEBUT</th>
+      <th class="contentCell">DATEFIN</th>
+      <th class="contentCell">QUANTITE</th>
+
+    </thead>
+    <tbody>
+      <tr *ngFor="let traitement of traitements; let i = index">
+        <td class="contentCell">{{ traitement.numerotraitement }}</td>
+        <td class="contentCell">{{ traitement.description }}</td>
+        <td class="contentCell">{{ traitement.cout }}</td>
+        <td class="contentCell">{{ traitement.datedebut }}</td>
+        <td class="contentCell">{{ traitement.datefin }}</td>
+        <td class="contentCell">{{ traitement.quantitetraitement }}</td>
+        <td class="actionCell">
+      </tr>
+    </tbody>
+  </table>
+  <p>  Le Montant toral de la facture s eleve a : {{factureTotal}} $</p>
+</div>
