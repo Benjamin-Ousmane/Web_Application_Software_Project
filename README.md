@@ -1,6 +1,8 @@
 # Web-Application-Software-Project
 Web application similar to SketchPad with Angular/Typescript/Html/Css/NodeJs
 
+- Decompress WebAppProjectSketch.zip and open it with Visual Studio Code
+
 - In the terminal go to the client folder and run npm install
 - In the terminal go to the server folder and run npm install
 
